@@ -50,26 +50,99 @@ Alternatively, you can manually compile a specific .c file using the following c
 
 ## Sorting Algorithms and Performance
 
-This project includes files that implement various sorting algorithms to rank words or strings based on frequency. The choice of algorithm can significantly impact execution time, depending on the size and distribution of the dataset.
+This project includes implementations of various sorting algorithms to rank words or strings based on frequency. The choice of algorithm can significantly impact execution time depending on the size and distribution of the dataset.
 
 The sorting algorithms are implemented in the following files:
 
 - **algorithms/basic_sorting_algorithms.c**: Contains simple sorting algorithms such as **Bubble Sort**, **Selection Sort**, **Insertion Sort**, **Shell Sort**, and **Counting Sort**.
 - **algorithms/advanced_sorting_algorithms.c**: Contains more advanced sorting algorithms such as **Merge Sort**, **Quick Sort**, **Heap Sort**, and **Radix Sort**.
 
-Below are the sorting algorithms implemented in the respective files, their time complexities, and explanations of the **best case** and **worst case** scenarios for each.
+Below are the sorting algorithms implemented, their time complexities, and explanations of the **best case** and **worst case** scenarios for each.
 
-| **Algorithm**        | **Best Case**     | **Average Case**     | **Worst Case**      |
-|----------------------|-------------------|----------------------|---------------------|
-| **Bubble Sort**       | O(n)              | O(n²)                | O(n²)               |
-| **Selection Sort**    | O(n²)             | O(n²)                | O(n²)               |
-| **Insertion Sort**    | O(n)              | O(n²)                | O(n²)               |
-| **Shell Sort**        | O(n log n)        | O(n log n)           | O(n²)               |
-| **Counting Sort**     | O(n + k)          | O(n + k)             | O(n + k)            |
-| **Merge Sort**        | O(n log n)        | O(n log n)           | O(n log n)          |
-| **Quick Sort**        | O(n log n)        | O(n log n)           | O(n²)               |
-| **Heap Sort**         | O(n log n)        | O(n log n)           | O(n log n)          |
-| **Radix Sort**        | O(nk)             | O(nk)                | O(nk)               |
+| **Algorithm**         | **Best Case**      | **Average Case**     | **Worst Case**       |
+|-----------------------|--------------------|----------------------|----------------------|
+| **Bubble Sort**        | O(n)               | O(n²)                | O(n²)                |
+| **Selection Sort**     | O(n²)              | O(n²)                | O(n²)                |
+| **Insertion Sort**     | O(n)               | O(n²)                | O(n²)                |
+| **Shell Sort**         | O(n log n)         | O(n log n)           | O(n²)                |
+| **Counting Sort**      | O(n + k)           | O(n + k)             | O(n + k)             |
+| **Merge Sort**         | O(n log n)         | O(n log n)           | O(n log n)           |
+| **Quick Sort**         | O(n log n)         | O(n log n)           | O(n²)                |
+| **Heap Sort**          | O(n log n)         | O(n log n)           | O(n log n)           |
+| **Radix Sort**         | O(nk)              | O(nk)                | O(nk)                |
+
+---
+
+### **Explanation of Best and Worst Case Scenarios for Each Algorithm**
+
+#### **Bubble Sort**
+- **Best Case (O(n))**: Occurs when the array is already sorted or nearly sorted. Since Bubble Sort is adaptive, it can terminate after one pass without any swaps if the array is sorted.
+- **Worst Case (O(n²))**: Happens when the array is completely unsorted. Each element has to be compared and swapped, resulting in the maximum number of comparisons and swaps.
+
+##### **Example**: 
+- Best case: `[1, 2, 3, 4, 5]` (the algorithm makes one pass and finishes).
+- Worst case: `[5, 4, 3, 2, 1]` (the algorithm performs the maximum number of comparisons and swaps).
+
+#### **Selection Sort**
+- **Best Case (O(n²))**: Selection Sort always performs **O(n²)** comparisons, regardless of whether the array is sorted or not.
+- **Worst Case (O(n²))**: The time complexity remains the same, as the algorithm always goes through the entire array to find the smallest (or largest) element in each iteration.
+
+##### **Example**:
+- Best and worst case: `[5, 4, 3, 2, 1]` or `[1, 2, 3, 4, 5]` (the algorithm always performs O(n²) comparisons).
+
+#### **Insertion Sort**
+- **Best Case (O(n))**: Occurs when the array is already sorted, as the algorithm only makes comparisons and no swaps.
+- **Worst Case (O(n²))**: Happens when the array is in reverse order, as each new element must be compared with all previous ones, leading to the maximum number of comparisons and shifts.
+
+##### **Example**:
+- Best case: `[1, 2, 3, 4, 5]` (no shifts, only comparisons).
+- Worst case: `[5, 4, 3, 2, 1]` (each new element must be shifted to the start of the array).
+
+#### **Shell Sort**
+- **Best Case (O(n log n))**: Depending on the choice of gap sequence, Shell Sort can perform much better than Insertion Sort, especially on partially sorted arrays.
+- **Worst Case (O(n²))**: If an inefficient gap sequence is chosen, the performance can degrade to **O(n²)**, similar to Insertion Sort.
+
+##### **Example**:
+- Best case: Partially sorted arrays with an optimal gap sequence.
+- Worst case: An inefficient gap sequence results in **O(n²)** behavior.
+
+#### **Counting Sort**
+- **Best Case (O(n + k))**: As a non-comparative algorithm, its performance directly depends on **k**, the range of values.
+- **Worst Case (O(n + k))**: Even in the worst case, the complexity is still **O(n + k)**, but if **k** is large, the algorithm may become inefficient.
+
+##### **Example**:
+- Best case: `[1, 2, 3, 4, 5]`, with values in a small range.
+- Worst case: A large range of values where **k** is very large.
+
+#### **Merge Sort**
+- **Best Case (O(n log n))**: Always divides the array in half and merges them, even when the data is already sorted. Complexity remains **O(n log n)**.
+- **Worst Case (O(n log n))**: The division and merging steps are always performed the same way, resulting in **O(n log n)** complexity regardless of the input order.
+
+##### **Example**:
+- Best and worst case: `[1, 2, 3, 4, 5]` or `[5, 4, 3, 2, 1]` (the behavior of the algorithm is the same in both cases).
+
+#### **Quick Sort**
+- **Best Case (O(n log n))**: Occurs when the pivot is chosen well (usually the pivot divides the array into two roughly equal halves).
+- **Worst Case (O(n²))**: Happens when the pivot is always the smallest or largest element, leading to an unbalanced partition and a time complexity of **O(n²)**.
+
+##### **Example**:
+- Best case: A pivot divides the array well (e.g., `[3, 2, 1, 4, 5]`).
+- Worst case: A pivot is the smallest or largest element repeatedly (e.g., `[1, 2, 3, 4, 5]`).
+
+#### **Heap Sort**
+- **Best Case (O(n log n))**: Always builds the heap and performs the extraction. The performance does not depend on the initial order of the data.
+- **Worst Case (O(n log n))**: Even in the worst case, Heap Sort maintains **O(n log n)** complexity since the heap construction and element extraction steps are consistent.
+
+##### **Example**:
+- Best and worst case: The complexity is always **O(n log n)**, regardless of input.
+
+#### **Radix Sort**
+- **Best Case (O(nk))**: Depends on the number of digits (k) in the values, and it is very efficient when **k** is small.
+- **Worst Case (O(nk))**: The complexity remains the same, but if **k** is large, the algorithm may become inefficient. It is ideal for data with small digit lengths or fixed-length strings.
+
+##### **Example**:
+- Best case: Numbers or strings with fewer digits (e.g., `[123, 234, 345]`).
+- Worst case: Large numbers or strings with many digits (e.g., large integers).
 
 ---
 
@@ -77,12 +150,12 @@ Below are the sorting algorithms implemented in the respective files, their time
 
 The choice of sorting algorithm can significantly influence the execution time of the program, especially when processing large datasets or datasets with highly variable frequencies.
 
-- **Bubble Sort**, **Selection Sort**, and **Insertion Sort** are simple but inefficient algorithms for large datasets, with **O(n²)** time complexity in the worst case. They are best suited for small or partially sorted datasets.
-- **Shell Sort** can be more efficient than the previously mentioned algorithms, especially for smaller to medium-sized lists, but its worst-case time complexity is **O(n²)**. Its performance heavily depends on the choice of gap sequence.
-- **Counting Sort** and **Radix Sort** are non-comparative algorithms that can be very efficient when the dataset has a limited range of values or small digit lengths. Both algorithms have linear time complexity **O(n + k)** or **O(nk)**, but can become inefficient when the range of values is large.
-- **Merge Sort**, **Quick Sort**, and **Heap Sort** are more reliable for large datasets with time complexities of **O(n log n)**. However, **Quick Sort** can degrade to **O(n²)** in the worst case if the pivot selection is poor.
+- **Bubble Sort**, **Selection Sort**, and **Insertion Sort** are simple but inefficient for large datasets, with **O(n²)** time complexity in the worst case. They are best suited for small or partially sorted datasets.
+- **Shell Sort** can be more efficient, especially for small to medium-sized lists, but its worst-case time complexity is **O(n²)**. Its performance heavily depends on the choice of gap sequence.
+- **Counting Sort** and **Radix Sort** are non-comparative algorithms that can be very efficient when the dataset has a limited range of values or small digit lengths. Both have **O(n + k)** or **O(nk)** complexity but can become inefficient if the range of values is large.
+- **Merge Sort**, **Quick Sort**, and **Heap Sort** are more reliable for large datasets with **O(n log n)** time complexities. However, **Quick Sort** can degrade to **O(n²)** in the worst case if the pivot selection is poor.
 
-In general, for large datasets, **Merge Sort**, **Quick Sort**, or **Heap Sort** are the most predictable and efficient choices. **Radix Sort** is ideal for numeric data or strings with fixed lengths. **Counting Sort** works well when the range of data is well-defined, but can be problematic if **k** (the range of values) is very large.
+In general, for large datasets, **Merge Sort**, **Quick Sort**, or **Heap Sort** are the most predictable and efficient choices. **Radix Sort** is ideal for numeric data or strings with fixed lengths. **Counting Sort** works well when the range of data is well-defined but can be problematic if **k** (the range of values) is very large.
 
 ---
 
