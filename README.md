@@ -5,10 +5,14 @@ _A Modular Collection of Algorithms and Data Structures for Performance Testing 
 
 This project provides implementations of various fundamental algorithms and data structures, focusing on the efficiency and flexibility of their operations. Instead of having a fixed main source file, the project allows the user to choose and compile any individual `.c` file, making it easy to test specific algorithms or data structures like sorting, searching, trees, graphs, and more. The goal is to offer a modular approach to studying and testing different algorithms in practice.
 
+---
+
 ## Requirements
 
 - A C compiler (e.g., GCC)
 - `make` tool installed on your system (for compiling using the Makefile)
+
+---
 
 ## How to Run
 
